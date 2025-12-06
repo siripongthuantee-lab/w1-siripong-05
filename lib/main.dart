@@ -195,27 +195,39 @@ class MyHomePage extends StatelessWidget {
       builder: (BuildContext context) {
         return Dialog(
           backgroundColor: Colors.transparent,
-          insetPadding: EdgeInsets.zero,
-          child: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              color: Colors.transparent,
-              child: Center(
-                child: InteractiveViewer(
-                  minScale: 0.5,
-                  maxScale: 4.0,
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                      Icons.error,
-                      color: Colors.white,
-                      size: 80,
+          insetPadding: const EdgeInsets.all(20),
+          child: Stack(
+            children: [
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Center(
+                  child: InteractiveViewer(
+                    minScale: 0.5,
+                    maxScale: 4.0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        imageUrl,
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) => const Icon(
+                          Icons.error,
+                          color: Colors.white,
+                          size: 80,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white, size: 30),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ),
+            ],
           ),
         );
       },
