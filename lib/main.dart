@@ -484,14 +484,26 @@ class _SecondPageState extends State<SecondPage> {
     );
   }
 
-  // ฟังก์ชันสร้างส่วนสถิติ (ติดตาม, ผู้ติดตาม, ถูกใจ)
+  // ฟังก์ชันสร้างส่วนสถิติ (ติดตาม, ผู้ติดตาม, ถูกใจ) พร้อมเส้นคั่น
   Widget _buildStats() {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildStatColumn("232", "ติดตาม"),
+          // เส้นคั่นแนวตั้ง
+          Container(
+            height: 30,
+            width: 1,
+            color: Colors.grey[700],
+          ),
           _buildStatColumn("315", "ผู้ติดตาม"),
+          // เส้นคั่นแนวตั้ง
+          Container(
+            height: 30,
+            width: 1,
+            color: Colors.grey[700],
+          ),
           _buildStatColumn("965.5 K", "ถูกใจ"),
         ],
       ),
